@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Simple Portfolio</title>
+        <style>
+            :root{
+                --bg:#0f1724;
+                --card:#0b1220;
+                --muted:#94a3b8;
+                --accent:#06b6d4;
+                --glass: rgba(255,255,255,0.03);
+                --max-width:1100px;
+                color-scheme: dark;
+            }
+            *{box-sizing:border-box}
+            body{
+                margin:0;
+                font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+                background:linear-gradient(180deg,var(--bg) 0%, #071020 100%);
+                color:#e6eef8;
+                -webkit-font-smoothing:antialiased;
+            }
+            .wrap{max-width:var(--max-width);margin:0 auto;padding:24px}
+
+            /* NAV */
+            header{
+                position:sticky;top:0;z-index:40;background:linear-gradient(180deg, rgba(7,16,32,0.6), rgba(7,16,32,0.35));backdrop-filter: blur(6px);
+            }
+            nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+            .brand{display:flex;align-items:center;gap:12px;font-weight:700}
+            .brand .logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:inline-block}
+            .nav-links{display:flex;gap:14px;align-items:center}
+            .nav-links a{color:var(--muted);text-decoration:none;padding:8px;border-radius:6px}
+            .nav-links a:hover{color:#fff;background:var(--glass)}
+            .btn-primary{background:linear-gradient(90deg,var(--accent),#7c3aed);padding:8px 12px;border-radius:8px;color:#021026;text-decoration:none;font-weight:600}
+
+            /* mobile */
+            .menu-toggle{display:none;background:none;border:0;color:var(--muted);font-size:20px}
+            @media (max-width:768px){
+                .nav-links{display:none;flex-direction:column;background:transparent;padding:12px;margin-top:8px;width:100%}
+                .nav-open .nav-links{display:flex}
+                .menu-toggle{display:inline-block}
+            }
+
+            /* HERO */
+            .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;padding:48px 0}
+            .hero h1{font-size:clamp(28px,5vw,44px);margin:0 0 8px}
+            .hero p{color:var(--muted);margin:0 0 18px}
+            .cta{display:flex;gap:12px;align-items:center}
+            .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px}
+            .profile-card{display:flex;flex-direction:column;gap:12px;align-items:center}
+            .avatar{width:120px;height:120px;border-radius:12px;background:linear-gradient(135deg,#334155,#0ea5a9)}
+
+            /* PROJECTS */
+            section.projects{padding:24px 0}
+            .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+            .project{padding:14px;border-radius:10px;background:var(--card);border:1px solid rgba(255,255,255,0.03)}
+            .project h4{margin:0 0 8px}
+            .project p{margin:0;color:var(--muted);font-size:14px}
+            @media (max-width:992px){.grid{grid-template-columns:repeat(2,1fr)}}
+            @media (max-width:600px){.hero{grid-template-columns:1fr;}
+                .grid{grid-template-columns:1fr}
+            }
+
+            /* FOOTER */
+            footer{border-top:1px solid rgba(255,255,255,0.03);padding:18px 0;color:var(--muted);}
+
+            a.small-link{color:var(--muted);text-decoration:none}
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="wrap nav-container">
+                <nav id="mainNav">
+                    <div class="brand"><span class="logo" aria-hidden="true"></span><span>Alex Doe</span></div>
+                    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰</button>
+                    <div class="nav-links" id="navLinks">
+                        <a href="#home">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#contact">Contact</a>
+                        <a class="btn-primary" href="#contact">Hire Me</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="wrap">
+            <section class="hero" id="home">
+                <div>
+                    <h1>Hi, I'm Alex — a Frontend Developer.</h1>
+                    <p>I build responsive and accessible web interfaces. I enjoy crafting performant UI and clean user experiences.</p>
+                    <div class="cta">
+                        <a class="btn-primary" href="#projects">View Projects</a>
+                        <a class="small-link" href="#contact">Get in touch</a>
+                    </div>
+                </div>
+                <aside class="card profile-card">
+                    <div class="avatar" role="img" aria-label="Profile illustration"></div>
+                    <div style="text-align:center">
+                        <strong>Alex Doe</strong>
+                        <div style="color:var(--muted);font-size:13px">Seattle, WA • Open to work</div>
+                    </div>
+                </aside>
+            </section>
+
+            <section id="about" class="card" style="margin-bottom:16px">
+                <h2 style="margin-top:0">About</h2>
+                <p style="color:var(--muted);margin:0">I'm a developer focused on building accessible, responsive websites using modern HTML, CSS, and JavaScript. I enjoy working on small teams and learning new technologies.</p>
+            </section>
+
+            <section id="projects" class="projects">
+                <h2>Projects</h2>
+                <div class="grid">
+                    <article class="project">
+                        <h4>Portfolio Site</h4>
+                        <p>Responsive portfolio built with semantic HTML and CSS grid.</p>
+                    </article>
+                    <article class="project">
+                        <h4>Weather App</h4>
+                        <p>Fetches weather data and displays forecasts with charts.</p>
+                    </article>
+                    <article class="project">
+                        <h4>Task Manager</h4>
+                        <p>Simple CRUD app with localStorage persistence and drag-and-drop.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="contact" class="card" style="margin-top:20px">
+                <h2>Contact</h2>
+                <p style="color:var(--muted);margin:0 0 12px">Want to work together? Send an email or connect on LinkedIn.</p>
+                <p style="margin:0"><a class="small-link" href="mailto:alex@example.com">alex@example.com</a></p>
+            </section>
+        </main>
+
+        <footer>
+            <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+                <div>© <strong>Alex Doe</strong> — Built with care.</div>
+                <div style="display:flex;gap:12px">
+                    <a class="small-link" href="#">GitHub</a>
+                    <a class="small-link" href="#">LinkedIn</a>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Mobile menu toggle
+            (function(){
+                const btn = document.getElementById('menuToggle');
+                const nav = document.getElementById('mainNav');
+                btn.addEventListener('click', ()=>{
+                    const expanded = btn.getAttribute('aria-expanded') === 'true';
+                    btn.setAttribute('aria-expanded', String(!expanded));
+                    document.body.classList.toggle('nav-open');
+                });
+            })();
+        </script>
+    </body>
+</html>
