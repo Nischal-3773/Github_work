@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Generated List</title>
+  <style>
+    body{font-family:system-ui,Arial;margin:20px}
+    ol{margin:0 0 1rem 1.25rem}
+  </style>
+</head>
+<body>
+  <div id="listContainer"></div>
+
+  <script>
+    const data = [
+      { title: 'coffee', subType: 'i', items: ['black coffee', 'green coffee'] },
+      { title: 'tea', subType: 'a', items: ['black tea', 'green tea'] }
+    ];
+
+    function buildList(containerId, data) {
+      const root = document.createElement('ol'); // main numeric list
+      data.forEach(section => {
+        const li = document.createElement('li');
+        li.textContent = section.title + ':';
+        const sub = document.createElement('ol');
+        sub.type = section.subType; // 'i' for roman, 'a' for letters
+        section.items.forEach(text => {
+          const subLi = document.createElement('li');
+          subLi.textContent = text;
+          sub.appendChild(subLi);
+        });
+        li.appendChild(sub);
+        root.appendChild(li);
+      });
+      document.getElementById(containerId).appendChild(root);
+    }
+
+    buildList('listContainer', data);
+  </script>
+</body>
+</html>
