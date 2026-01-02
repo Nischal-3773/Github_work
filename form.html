@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Attractive Responsive Form</title>
+	<style>
+		:root{--bg:#f4f7fb;--card:#ffffff;--accent:#6366f1;--muted:#6b7280;--success:#10b981}
+		*{box-sizing:border-box}
+		body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#f8fbff, #ffffff);color:#0f172a;padding:28px}
+		.container{max-width:920px;margin:24px auto;padding:22px;background:var(--card);border-radius:14px;box-shadow:0 10px 30px rgba(15,23,42,0.06);overflow:hidden;display:flex;gap:24px;align-items:flex-start}
+		.panel{flex:1;min-width:280px}
+		.preview{width:320px;background:linear-gradient(180deg,#fbfdff,#f5f7ff);border-radius:12px;padding:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
+		h1{margin:0 0 8px;font-size:1.35rem}
+		p.lead{margin:0 0 18px;color:var(--muted)}
+
+		form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+		label{display:block;font-size:0.85rem;color:#111827;margin-bottom:6px}
+		input[type="text"],input[type="email"],select,textarea{width:100%;padding:10px 12px;border:1px solid #e6eef8;border-radius:8px;background:#fbfdff;transition:box-shadow .18s ease,border-color .18s ease}
+		input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 6px 20px rgba(99,102,241,0.12)}
+		textarea{grid-column:1 / -1;min-height:96px;resize:vertical}
+
+		.full{grid-column:1 / -1}
+		.actions{display:flex;gap:10px;align-items:center;margin-top:8px}
+		.btn{padding:10px 14px;border-radius:10px;border:none;background:var(--accent);color:#fff;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(99,102,241,0.12);transition:transform .16s ease,box-shadow .16s ease}
+		.btn.secondary{background:#eef2ff;color:var(--accent);box-shadow:none}
+		.btn:active{transform:translateY(1px)}
+
+		/* Photo upload */
+		.photo-uploader{display:flex;gap:12px;align-items:center}
+		.avatar{width:84px;height:84px;border-radius:12px;background:linear-gradient(180deg,#fff,#f3f6ff);display:flex;align-items:center;justify-content:center;border:1px dashed #e6eef8;overflow:hidden}
+		.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+		.file-control{flex:1}
+		.file-input{display:none}
+		.file-label{display:inline-block;padding:8px 10px;border-radius:8px;background:#fff;border:1px solid #e6eef8;cursor:pointer;color:var(--accent);font-weight:600}
+
+		/* preview list */
+		.meta{font-size:0.95rem;color:var(--muted);margin-top:8px}
+		.meta b{color:#111827}
+
+		/* Responsive */
+		@media (max-width:920px){.container{flex-direction:column}.preview{width:100%}.container form{grid-template-columns:1fr}}
+
+		/* subtle animations */
+		.container{animation:cardIn .5s ease both}
+		@keyframes cardIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+		.hint{font-size:0.85rem;color:var(--muted);margin-top:6px}
+		.success{color:var(--success);font-weight:600}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="panel">
+			<h1>Sign Up</h1>
+			<p class="lead">Create your account — it only takes a minute. Fields marked * are required.</p>
+
+			<form id="userForm" autocomplete="off">
+				<div>
+					<label for="first">First Name *</label>
+					<input id="first" name="first" type="text" placeholder="Jane" required>
+				</div>
+				<div>
+					<label for="last">Last Name *</label>
+					<input id="last" name="last" type="text" placeholder="Doe" required>
+				</div>
+
+				<div class="full">
+					<label for="email">Email *</label>
+					<input id="email" name="email" type="email" placeholder="you@example.com" required>
+				</div>
+
+				<div>
+					<label for="phone">Phone</label>
+					<input id="phone" name="phone" type="text" placeholder="+1 555 555 5555">
+				</div>
+				<div>
+					<label for="role">Role</label>
+					<select id="role" name="role">
+						<option>Student</option>
+						<option>Developer</option>
+						<option>Designer</option>
+						<option>Other</option>
+					</select>
+				</div>
+
+				<div class="full">
+					<label>Profile Photo</label>
+					<div class="photo-uploader">
+						<div class="avatar" id="avatarPreview"> <span style="color:var(--muted);font-size:0.85rem">No photo</span></div>
+						<div class="file-control">
+							<label class="file-label" for="photoInput">Choose photo</label>
+							<input id="photoInput" class="file-input" type="file" accept="image/*">
+							<div class="hint">Max 4MB. JPG, PNG recommended.</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="full">
+					<label for="bio">Short Bio</label>
+					<textarea id="bio" name="bio" placeholder="Tell us a bit about yourself..."></textarea>
+				</div>
+
+				<div class="full actions">
+					<button class="btn" type="submit">Create account</button>
+					<button class="btn secondary" type="button" id="clearBtn">Clear</button>
+					<div style="margin-left:auto;color:var(--muted);font-size:0.9rem" id="status">Ready</div>
+				</div>
+			</form>
+		</div>
+
+		<aside class="preview">
+			<h2 style="margin:0 0 6px 0">Live Preview</h2>
+			<p class="meta">Name: <b id="pvName">—</b></p>
+			<p class="meta">Email: <b id="pvEmail">—</b></p>
+			<p class="meta">Role: <b id="pvRole">—</b></p>
+			<div style="margin-top:12px">Bio:</div>
+			<div style="min-height:56px;background:#fff;border-radius:8px;padding:10px;margin-top:8px;overflow:auto" id="pvBio">—</div>
+			<div style="margin-top:12px;display:flex;align-items:center;gap:10px">
+				<div style="width:52px;height:52px;border-radius:8px;overflow:hidden;border:1px solid #eef2ff" id="pvAvatar"></div>
+				<div style="font-size:0.9rem;color:var(--muted)">Photo preview</div>
+			</div>
+			<div style="margin-top:14px;color:var(--muted);font-size:0.85rem">Tip: Use the form on the left to update preview.</div>
+		</aside>
+	</div>
+
+	<script>
+		const form = document.getElementById('userForm');
+		const photoInput = document.getElementById('photoInput');
+		const avatarPreview = document.getElementById('avatarPreview');
+		const pvName = document.getElementById('pvName');
+		const pvEmail = document.getElementById('pvEmail');
+		const pvRole = document.getElementById('pvRole');
+		const pvBio = document.getElementById('pvBio');
+		const pvAvatar = document.getElementById('pvAvatar');
+		const status = document.getElementById('status');
+
+		function updatePreview(){
+			const data = new FormData(form);
+			const name = (data.get('first') || '') + ' ' + (data.get('last') || '');
+			pvName.textContent = name.trim() || '—';
+			pvEmail.textContent = data.get('email') || '—';
+			pvRole.textContent = data.get('role') || '—';
+			pvBio.textContent = data.get('bio') || '—';
+		}
+
+		form.addEventListener('input', updatePreview);
+
+		photoInput.addEventListener('change', e => {
+			const f = e.target.files && e.target.files[0];
+			if(!f) return;
+			if(f.size > 4 * 1024 * 1024){ alert('File too large (max 4MB)'); return; }
+			const reader = new FileReader();
+			reader.onload = ev => {
+				avatarPreview.innerHTML = '';
+				const img = document.createElement('img');
+				img.src = ev.target.result;
+				avatarPreview.appendChild(img);
+				pvAvatar.innerHTML = '';
+				const img2 = document.createElement('img'); img2.src = ev.target.result; img2.style.width='100%'; img2.style.height='100%'; img2.style.objectFit='cover'; pvAvatar.appendChild(img2);
+			};
+			reader.readAsDataURL(f);
+		});
+
+		document.querySelector('.file-label').addEventListener('click', ()=> document.getElementById('photoInput').click());
+
+		document.getElementById('clearBtn').addEventListener('click', ()=>{
+			form.reset(); avatarPreview.innerHTML = '<span style="color:var(--muted);font-size:0.85rem">No photo</span>'; pvAvatar.innerHTML=''; updatePreview(); status.textContent='Ready';
+		});
+
+		form.addEventListener('submit', e => {
+			e.preventDefault();
+			status.textContent = 'Submitting...';
+			// small demo animation
+			setTimeout(()=>{ status.textContent = 'Account created'; status.classList.add('success'); }, 700);
+		});
+
+		// initial preview
+		updatePreview();
+	</script>
+</body>
+</html>

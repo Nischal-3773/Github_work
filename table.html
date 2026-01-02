@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Attractive 10×7 Table</title>
+	<style>
+		:root{
+			--bg-1: #f3f8ff;
+			--accent: #0d6efd;
+			--muted: #6c757d;
+			--card: #ffffff;
+		}
+		html,body{height:100%;}
+		body { font-family: Inter, Arial, Helvetica, sans-serif; padding: 28px; background: linear-gradient(180deg,#eef6ff 0%, #ffffff 100%); color:#1f2937 }
+		h1{margin:0 0 12px 0;font-weight:600}
+		.table-wrap { max-width: 1100px; margin: 18px auto; background: var(--card); border-radius: 12px; box-shadow: 0 8px 30px rgba(13,27,64,0.08); overflow: hidden; animation: fadeInUp .5s ease both; }
+		table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+		thead th { background: linear-gradient(90deg,#0d6efd,#6610f2); color: white; font-weight:600; padding: 14px; text-align:left; position: sticky; top: 0; }
+		th, td { padding: 12px 14px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+		tbody tr { transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease; }
+		tbody tr:hover { transform: translateY(-6px); box-shadow: 0 8px 20px rgba(11,55,120,0.08); background: linear-gradient(90deg, rgba(13,110,253,0.03), rgba(102,16,242,0.03)); }
+		td small{color:var(--muted);display:block}
+
+		.badge{display:inline-block;padding:6px 10px;border-radius:999px;font-size:0.85rem;color:#fff;transition:transform .25s ease, box-shadow .25s ease}
+		.badge.success{background:#28a745}
+		.badge.info{background:#0dcaf0;color:#072b3a}
+		.badge.warn{background:#ffc107;color:#2b2b00}
+		.badge.pulse{animation:pulse 2000ms infinite}
+
+		.btn{display:inline-block;padding:8px 12px;border-radius:8px;background:var(--accent);color:#fff;border:none;cursor:pointer;font-weight:600;transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
+		.btn.secondary{background:#6c757d}
+		.btn:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(13,110,253,0.12)}
+
+		/* Responsive */
+		@media (max-width:900px){ thead th:nth-child(5), td:nth-child(5){display:none} }
+
+		@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
+		@keyframes fadeInUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+	</style>
+</head>
+<body>
+	<h1>Attractive 10 × 7 Table</h1>
+	<p style="margin:6px 0 0;color:var(--muted)">A larger table (10 rows × 7 columns) with subtle animations and transitions.</p>
+
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr>
+					<th style="width:6%">No</th>
+					<th style="width:18%">Name</th>
+					<th style="width:14%">Category</th>
+					<th style="width:12%">Status</th>
+					<th style="width:26%">Details</th>
+					<th style="width:12%">Created</th>
+					<th style="width:12%">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Alpha</td>
+					<td>Core</td>
+					<td><span class="badge success pulse">Active</span></td>
+					<td>Primary module handling auth and routing.</td>
+					<td><small>2026-01-01</small></td>
+					<td><button class="btn">View</button></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Beta</td>
+					<td>Plugin</td>
+					<td><span class="badge warn">Maintenance</span></td>
+					<td>Optional plugin for analytics integration.</td>
+					<td><small>2025-12-12</small></td>
+					<td><button class="btn secondary">Edit</button></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Gamma</td>
+					<td>Module</td>
+					<td><span class="badge success">Active</span></td>
+					<td>Background job scheduler and queue worker.</td>
+					<td><small>2025-11-28</small></td>
+					<td><button class="btn">View</button></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Delta</td>
+					<td>Feature</td>
+					<td><span class="badge info">Pending</span></td>
+					<td>New UI feature under review.</td>
+					<td><small>2025-10-05</small></td>
+					<td><button class="btn">View</button></td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Epsilon</td>
+					<td>Core</td>
+					<td><span class="badge success">Active</span></td>
+					<td>Performance improvements and caching layer.</td>
+					<td><small>2025-09-12</small></td>
+					<td><button class="btn secondary">Edit</button></td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>Zeta</td>
+					<td>Plugin</td>
+					<td><span class="badge warn">Deprecated</span></td>
+					<td>Legacy integration scheduled for removal.</td>
+					<td><small>2024-07-21</small></td>
+					<td><button class="btn">View</button></td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>Eta</td>
+					<td>Module</td>
+					<td><span class="badge success">Active</span></td>
+					<td>Validation and schema enforcement utilities.</td>
+					<td><small>2024-05-18</small></td>
+					<td><button class="btn">View</button></td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>Theta</td>
+					<td>Feature</td>
+					<td><span class="badge info">Pending</span></td>
+					<td>Experimental layout engine.</td>
+					<td><small>2024-02-11</small></td>
+					<td><button class="btn secondary">Edit</button></td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>Iota</td>
+					<td>Core</td>
+					<td><span class="badge success">Active</span></td>
+					<td>Security hardening patches applied.</td>
+					<td><small>2023-12-01</small></td>
+					<td><button class="btn">View</button></td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>Kappa</td>
+					<td>Misc</td>
+					<td><span class="badge info">Draft</span></td>
+					<td>Notes and experimental snippets.</td>
+					<td><small>2023-08-09</small></td>
+					<td><button class="btn secondary">Edit</button></td>
+				</tr>
+				<tr>
+					<td colspan="7" style="background:#fbfbff;color:var(--muted);text-align:left;padding:14px 18px;font-size:0.95rem">Summary: 10 items — hover rows to see subtle lift and action button effects.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
