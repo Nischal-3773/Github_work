@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Positioning Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #p1 {
+            position: relative;
+            background-color: lightblue;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid blue;
+        }
+
+        #p2 {
+            float: left;
+            background-color: lightgreen;
+            padding: 15px;
+            margin: 10px;
+            border: 2px solid green;
+            width: 40%;
+        }
+
+        #p3 {
+            position: absolute;
+            background-color: lightyellow;
+            padding: 15px;
+            border: 2px solid orange;
+            top: 250px;
+            right: 20px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Positioning Demonstration</h1>
+
+    <p id="p1">
+        <strong>Paragraph 1 (Relative Position):</strong> This paragraph has position set to relative. 
+        Relative positioning allows an element to be positioned relative to its normal position in the document flow. 
+        The element still takes up space in the normal layout.
+    </p>
+
+    <p id="p2">
+        <strong>Paragraph 2 (Float):</strong> This paragraph has float property set to left. 
+        Floating an element removes it from the normal document flow and allows other content to wrap around it. 
+        This is commonly used for laying out multiple elements side by side.
+    </p>
+
+    <p id="p3">
+        <strong>Paragraph 3 (Absolute Position):</strong> This paragraph has position set to absolute. 
+        Absolute positioning removes the element from the normal document flow and positions it relative to its nearest positioned ancestor (or the viewport). 
+        The element does not take up space in the normal layout.
+    </p>
+
+    <p style="clear: both; margin-top: 250px;">
+        This paragraph is here to demonstrate how floating and absolute positioning work with other content.
+    </p>
+</body>
+</html>
